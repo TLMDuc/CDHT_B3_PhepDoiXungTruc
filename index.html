@@ -1157,14 +1157,12 @@ ightarrow M'(y; x)$.<br>
     let lastDataHash = "";
 
     function getDbEndpoint() {
-        if (customDbUrl) {
-            let cleanUrl = customDbUrl.trim().replace(/\/+$/, "");
-            if (!cleanUrl.endsWith(".json")) {
-                cleanUrl += "/leaderboard_b3.json";
-            }
-            return cleanUrl;
+        let baseUrl = (customDbUrl || DEFAULT_DB_URL || "").trim().replace(/\/+$/, "");
+        if (!baseUrl) return "";
+        if (baseUrl.endsWith(".json")) {
+            return baseUrl;
         }
-        return DEFAULT_DB_URL;
+        return baseUrl + "/leaderboard_b3.json";
     }
 
     const playerNameInput = document.getElementById("playerName");
