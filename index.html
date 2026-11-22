@@ -1138,9 +1138,6 @@ ightarrow M'(y; x)$.<br>
             </div>
             <div class="lb-footer">
                 <div id="syncStatus">Chế độ: <strong>Cloud Realtime (Dùng chung)</strong></div>
-                <div style="margin-top: 0.35rem;">
-                    <span class="config-toggle" onclick="toggleConfig()">⚙️ Cấu hình Firebase riêng (nếu cần)</span>
-                </div>
                 <div class="config-panel" id="configPanel">
                     <p style="margin-bottom: 0.3rem;">Nhập <strong>Firebase Realtime Database URL</strong> của bạn để tạo phòng thi riêng trên GitHub Pages:</p>
                     <input type="text" id="firebaseUrlInput" placeholder="https://your-project-default-rtdb.firebaseio.com">
@@ -1157,7 +1154,7 @@ ightarrow M'(y; x)$.<br>
     let lastDataHash = "";
 
     function getDbEndpoint() {
-        let baseUrl = (customDbUrl || DEFAULT_DB_URL || "").trim().replace(/\/+$/, "");
+        let baseUrl = (DEFAULT_DB_URL || "").trim().replace(/\/+$/, "");
         if (!baseUrl) return "";
         if (baseUrl.endsWith(".json")) {
             return baseUrl;
